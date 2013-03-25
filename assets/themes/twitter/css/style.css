@@ -233,6 +233,10 @@ body {
   background-color: #ffffff;
 }
 
+.extra-padding {
+  padding-top: 100px;
+}
+
 a {
   color: #007fff;
   text-decoration: none;
@@ -4573,6 +4577,10 @@ input[type="submit"].btn.btn-mini {
 
 .navbar-fixed-top {
   top: 0;
+}
+
+.navbar-secondary {
+  top: 50px;
 }
 
 .navbar-fixed-top .navbar-inner,

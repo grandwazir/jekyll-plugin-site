@@ -10,7 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Import bootstrap .js -->
-    <script type="text/javascript" src="{{ ASSET_PATH }}/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="{{ ASSET_PATH }}/bootstrap/js/bootstrap.js"></script>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
@@ -35,7 +36,7 @@
 
   </head>
 
-  {% if page.scrollspy %}<body class="extra-padding">{% else %}<body>{% endif %}
+  {% if page.scrollspy %}<body data-spy="scroll" data-target="#scrollspy" class="extra-padding">{% else %}<body>{% endif %}
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-narrow">
@@ -51,7 +52,7 @@
 
     <!-- Add a secondary bar if necessary -->
     {% if page.scrollspy %}
-    <div class="navbar navbar-inverse navbar-fixed-top navbar-secondary">
+    <div id="scrollspy" class="navbar navbar-inverse navbar-fixed-top navbar-secondary">
       <div class="navbar-inner">
         <div class="container-narrow">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -63,7 +64,7 @@
             <ul class="nav">
               {% for item in page.scrollspy %}
                 {% if forloop.first %}
-                  <li class="active"><a href="#{{ item | downcase | replace:' ','-' }}">{{ item }}</a></li>
+                  <li><a href="#{{ item | downcase | replace:' ','-' }}">{{ item }}</a></li>
                 {% else %}
                   <li><a href="#{{ item | downcase | replace:' ','-' }}">{{ item }}</a></li>
                 {% endif %}

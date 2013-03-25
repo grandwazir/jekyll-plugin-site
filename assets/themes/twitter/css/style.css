@@ -234,8 +234,9 @@ body {
 }
 
 .extra-padding {
-  padding-top: 100px;
+  margin-top: 55px;
 }
+
 
 a {
   color: #007fff;
@@ -756,6 +757,8 @@ h6 {
   line-height: 20px;
   color: #080808;
   text-rendering: optimizelegibility;
+  margin-top: -100px;
+  padding-top: 100px;
 }
 
 h1 small,

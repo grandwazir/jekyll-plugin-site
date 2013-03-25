@@ -35,7 +35,7 @@
 
   </head>
 
-  <body>
+  {% if page.scrollspy %}<body class="extra-padding">{% else %}<body>{% endif %}
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-narrow">
@@ -48,6 +48,32 @@
         </div>
       </div>
     </div>
+
+    <!-- Add a secondary bar if necessary -->
+    {% if page.scrollspy %}
+    <div class="navbar navbar-inverse navbar-fixed-top navbar-secondary">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <div class="nav-collapse">       
+            <ul class="nav">
+              {% for item in page.scrollspy %}
+                {% if forloop.first %}
+                  <li class="active"><a href="#{{ item | downcase | replace:' ','-' }}">{{ item }}</a></li>
+                {% else %}
+                  <li><a href="#{{ item | downcase | replace:' ','-' }}">{{ item }}</a></li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
 
     <div class="container-narrow">
 

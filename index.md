@@ -2,6 +2,7 @@
 layout: simple_page
 title: Hello World!
 tagline: Supporting tagline
+scrollspy: [Update Author Attributes, Sample Posts]
 ---
 {% include JB/setup %}
 

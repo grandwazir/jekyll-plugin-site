@@ -294,6 +294,11 @@ a:focus {
   width: 940px;
 }
 
+.container-narrow {
+  margin: 0 auto;
+  max-width: 840px;
+}
+
 .span12 {
   width: 940px;
 }

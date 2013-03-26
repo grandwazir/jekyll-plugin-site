@@ -19,4 +19,5 @@
       {% capture ASSET_PATH %}{{ BASE_PATH }}/assets/themes/{{ page.theme.name }}{% endcapture %}
     {% endif %}  
   {% endif %}
+  {% assign package.name = {% site.name | lowercase | replace:' ','-' %} %}
 {% endcapture %}{% assign jbcache = nil %}

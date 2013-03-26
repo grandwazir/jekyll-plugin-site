@@ -11,6 +11,7 @@ safe: true
 # so be sure to set them if your theme uses them.
 #
 title : PLUGIN NAME
+package: hearthstone
 author :
   name : James Richardson
   email : grandwazir@armathia.net

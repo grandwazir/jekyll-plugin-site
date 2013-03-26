@@ -28,10 +28,10 @@ group: navigation
 </p>
 ### Building from source
 
-You can also build BanHammer from the source if you would prefer to do so. This is useful for those who wish to modify BanHammer before using it or want to contribute new features. 
+You can also build {{ site.title }} from the source if you would prefer to do so. This is useful for those who wish to modify {{ site.package | capitalize }} before using it or want to contribute new features. 
 
 Note it is no longer necessary to do this to alter messages in the plugin. Instead you should read the documentation on how to localise the plugin instead. This assumes that you have Maven and git installed on your computer.
 
-    git clone git://github.com/grandwazir/BanHammer.git
-    cd BanHammer
+    git clone git://github.com/grandwazir/{{ site.package | capitalize }}.git
+    cd {{ site.package | capitalize }}
     mvn install

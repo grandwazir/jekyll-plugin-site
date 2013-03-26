@@ -11,7 +11,7 @@ group: navigation
 
 <ul class="inline">
     <li><a href="http://repository.james.richardson.name/releases/name/richardson/james/bukkit/hearthstone/{{ page.version }}/hearthstone-{{ page.version }}.jar"><button class="btn btn-large btn-primary" type="button">Download</button></a></li>
-    <li><a href="/versions/{{page.version}}.html"><button class="btn btn-large btn-info" type="button">What's new</button></a></li>
+    <li><a href="{{  BASE_PATH }}/versions/{{page.version}}.html"><button class="btn btn-large btn-info" type="button">What's new</button></a></li>
     <li><a href="https://github.com/grandwazir/Hearthstone/tree/v{{ page.version }}"><button class="btn btn-large btn" type="button">Source</button></a></li>
 </ul>
 

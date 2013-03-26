@@ -64,9 +64,9 @@
             <ul class="nav">
               {% for item in page.scrollspy %}
                 {% if forloop.first %}
-                  <li><a href="#{{ item | downcase | replace:' ','-' }}">{{ item }}</a></li>
+                  <li><a href="#{{ item | downcase | replace:' ','_' }}">{{ item }}</a></li>
                 {% else %}
-                  <li><a href="#{{ item | downcase | replace:' ','-' }}">{{ item }}</a></li>
+                  <li><a href="#{{ item | downcase | replace:' ','_' }}">{{ item }}</a></li>
                 {% endif %}
               {% endfor %}
             </ul>

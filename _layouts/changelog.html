@@ -2,4 +2,10 @@
 layout: default
 ---
 {% include JB/setup %}
+{% unless page.latest_version %}
+<div class="alert">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  This is not the current version of the plugin.
+</div>
+{% endunless %}
 {% include themes/twitter/changelog.html %}

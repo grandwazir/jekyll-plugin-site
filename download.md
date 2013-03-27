@@ -2,7 +2,7 @@
 layout: page
 title: "Download"
 description: "Download BanHammer"
-version: 2.0.7
+version: 2.1.0
 group: navigation
 ---
 {% include JB/setup %}

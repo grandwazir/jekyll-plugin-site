@@ -1,7 +1,7 @@
 ---
 layout: front
-title: PROJECT_TITLE
-description: PROJECT_DESCRIPTION
+title: BanHammer
+description: Bans, kicks and records
 ---
 {% include JB/setup %}
 

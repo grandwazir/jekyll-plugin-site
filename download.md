@@ -1,8 +1,8 @@
 ---
 layout: page
 title: "Download"
-description: "Download Hearthstone"
-version: 1.3.2
+description: "Download BanHammer"
+version: 2.0.7
 group: navigation
 ---
 {% include JB/setup %}

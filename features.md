@@ -3,7 +3,7 @@ layout: page
 title: "Features"
 description: ""
 group: navigation
-scrollspy: [Banning, Recording, Alias integration]
+scrollspy: [Banning, Recording, Tab completion, Alias integration]
 ---
 {% include JB/setup %}
 
@@ -54,6 +54,12 @@ BanHammer supports any of the databases that Bukkit currently supports, which at
 You can view your own ban history, or that of any other player, quickly and easily within the game. You can also revoke previous bans, clear the history of a player altogether and export or import bans from the stock minecraft list.
 
 There is also the ability to review recent bans; a useful feature if you want to see who has been banned while you are away.
+
+## Tab completion
+
+BanHammer now features tab completion for all commands where it is appropriate. This means it is never been easier to manage the bans on your server. Simply start typing a player's name and press tab and it will automatically match the name either from the people online or from the database.
+
+The same feature has been extended to completing names of commands and the names of limits. Go and try it out; it is awesome!
 
 ## Alias integration
 

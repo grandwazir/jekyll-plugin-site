@@ -104,4 +104,40 @@ BanHammer can export the names of all the players who have bans to the basic ban
 
 *All active bans will be converted into permenant bans when exported.*
 
+## Permissions
+
+<dl>
+  <dt>banhammer</dt>
+  <dd>Allows access to everything in the plugin (defaults op).</dd>
+  <dt>banhammer.ban</dt>
+  <dd>Allow a player to ban someome permanently (defaults op).</dd>
+  <dt>banhammer.ban.[limit]</dt>
+  <dd>Allow a player to ban someone up to the <a href="{{ BASE_PATH }}/getting_started.html#setting_a_maximum_length_for_temporary_bans">limit specified</a> in limits.yml (defaults false).</dd>
+  <dt>banhammer.check</dt>
+  <dd>Allow a player to check if someone is banned (defaults op).</dd>
+  <dt>banhammer.export</dt>
+  <dd>Allow a player export bans to banned-players.txt (defaults op).</dd>
+  <dt>banhammer.history</dt>
+  <dd>Allow a player to view the ban history of anyone (defaults op).</dd>
+  <dt>banhammer.history.own</dt>
+  <dd>Allow a player to view their own ban history (defaults true).</dd>
+  <dt>banhammer.history.others</dt>
+  <dd>Allow a player to view the ban history of others (defaults op).</dd>
+  <dt>banhammer.import</dt>
+  <dd>Allow a player import bans from banned-players.txt (defaults op).</dd>
+  <dt>banhammer.kick</dt>
+  <dd>Allow a player to kick another (defaults op).</dd>
+  <dt>banhammer.limits</dt>
+  <dd>Allow a player to view any configured limits (defaults op).</dd>
+  <dt>banhammer.pardon</dt>
+  <dd>Allow a player to pardon any ban (defaults op).</dd>
+  <dt>banhammer.pardon.own</dt>
+  <dd>Allow a player to pardon bans that they have made (defaults op).</dd>
+  <dt>banhammer.pardon.others</dt>
+  <dd>Allow a player to pardon bans made by others (defaults op).</dd>
+  <dt>banhammer.purge</dt>
+  <dd>Allow a player to purge the ban history of a player (defaults op).</dd>
+  <dt>banhammer.recent</dt>
+  <dd>Allow a player to see what bans have recently been made (defaults op).</dd>
+</dl>
 

@@ -10,8 +10,8 @@ safe: false
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : PLUGIN NAME
-package: hearthstone
+title : TimedMessages
+package: timedmessages
 author :
   name : James Richardson
   email : grandwazir@armathia.net

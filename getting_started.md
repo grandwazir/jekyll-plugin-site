@@ -3,53 +3,133 @@ layout: page
 title: "Getting started"
 description: ""
 group: navigation
-scrollspy: [Setting homes, Going home, Permissions] 
+scrollspy: [Creating messages, Specifing locations, Permissions] 
 ---
 {% include JB/setup %}
 
-<p class="lead">Getting started with Hearthstone couldn't be easier. Just download and drag it into your plugins folder and away you go. Still stuck? Read on.</p>
+<p class="lead">Getting started with TimedMessages couldn't be easier. Just download and drag it into your plugins folder, write your messages into messages.yml and away you go. Still stuck? Read on.</p>
 
-## Setting homes
+## Creating messages
 
-Players can set a home anywhere in the game world with two exceptions. Firstly players may not set homes in areas where they are unable to build. Secondly they can not use an obstructed location. Hearthstone considers any area which is not made out of air and does not have enough space for the player to teleport to as obstructed.
+For our example I am going to create a basic message which provides hints to players every 5 minutes. I want all players to receive the messages and I want to go through the message list in order to make sure people get to read each one. My messages.yml is going to end up looking something like this:
 
-You can set your own home by typing either `/home set` or `/hs set`; both do exactly the same thing. There is no cooldown when setting a new home and you can do it as often as you like.
+    messages:
+      general-hints:
+        mode: rotation
+        delay: 5m
+        messages:
+        - Type /help for details on all our commands.
+        - Type /home set to set your home.
+        - You may not build near spawn.
 
-Players are allowed to set one home per world. If they set another one when they already have an existing home, it will forget about the other one.
+You can specify times using either seconds, minutes, hours or days. For example if I wanted to do a message every 1 hour, 12 minutes and 30 seconds I would use:
 
-### Setting other players homes
+    delay: 1h12m30s
 
-You can also set a home for someone else using the same command. This works exactly the same way but you need to supply the name of the player whos home you want to set. For example `/hs set grandwazir` would set my home to your current location.
+Next I am going to create another message but this time make it random, get broadcasted every every 7 minutes and 47 seconds (specific I know). I still want to keep my general hints so I will add our new message to our existing configuration like so:
 
-### Restricting home locations
+    messages:
+      general-hints:
+        mode: rotation
+        delay: 5m
+        messages:
+        - Type /help for details on all our commands.
+        - Type /home set to set your home.
+        - You may not build near spawn.
+      portal-quotes:
+        mode: random
+        delay: 7m47s
+        messages:
+        - What's your favorite thing about space? Mine is space.
+        - SPAAACCCCCE!
+        - Space space wanna go to space yes please space. Space space. Go to space.
 
-You can also prevent players from setting a world in a location where they are unable to build. This is helpful for example in adventure maps where teleportation could cause you problems.
+Both will now run at the same time. You may want to vary your delay times slightly to ensure that you do not have lots of messages being broadcast at the same time.
 
-All you need to do is download WorldGuard and region the areas of your world. Hearthstone will check with WorldGuard to see if a player is allowed to build in an area. It is that simple!
-## Going home
+#### Breaking long messages across separate lines
 
-You can teleport home at any time by typing `/home` providing it is not cooling down. This will instantly teleport to your home in your current world. Unless I have permission I would not be able to teleport again until my cooldown has expired.
+You can also separate long messages across separate lines by using `\n` where you want your message to be split. 
 
-You can also teleport to homes located in other worlds by typing `/hs teleport grandwazir world_nether`. This would teleport me to my secret nether fortress.
+This effectively broadcasts splits your message into two and broadcasts each part to the players. Because of this you need to take this into account when using colour codes.
 
-### Teleporting to other players homes
+    messages:
+    - "&LIGHT_PURPLEType /help for details on all our commands.\n&LIGHT_PURPLEType /home to go home."
 
-Additionally you can teleport to a home belonging to any player in any world. This command still enforces a cooldown, so it you may want to make sure your moderators are except from the cooldown when you give them permission to use this command. For example I am going to teleport to Fuzic's house in the current world by typing `/hs teleport fuzic`.
+#### Using colours
 
-### Cooldown between teleports
+You can use colours in your message list to make them more varied and interesting to read. You can either use the classic minecraft colours or use a more readable syntax. 
 
-It is possible for administrators to force players to obey a cooldown between teleports. This is useful to prevent players repeatedly setting and teleporting home as a travel, safety or griefing exploit. You set the amount of time you wish players to wait by changing the value of cooldown in the config.yml. By default it looks like this:
+In the following example I am going to change my general hints so they are displayed in light purple.
 
-    cooldown: 15m
+    messages:
+    - "&LIGHT_PURPLEType /help for details on all our commands."
+    - "&LIGHT_PURPLEType /home set to set your home."
+    - "&LIGHT_PURPLEYou may not build near spawn."
+
+You can mix and match as well and have as many colours as you like in a message. For example I am now going to colour my message so the commands are highlighted in red:
+
+    messages:
+    - "&LIGHT_PURPLEType &RED/help&LIGHT_PURPLE for details on all our commands."
+    - "&LIGHT_PURPLEType &RED/home&LIGHT_PURPLE set to set your home."
+    - "&LIGHT_PURPLEYou may not build near spawn."
+
+## Specifying locations
+
+#### Messages to only people in a certain world
+
+You can also create messages which are only broadcast to players that are in a specific world. This is useful for example if you have world specific rules that you want your players to know about.
+
+In the following example the messages will only be sent to players who are in the world 'nether' with the permission 'group.explorer'
+
+    guest-hints:
+      mode: rotation
+      delay: 5m
+      worlds:
+      - nether
+      permission: group.default
+
+#### Messages to only people in a certain WorldGuard region
+
+You can also create messages which are only broadcast to players who are in a specified WorldGuard region. This is useful if you want to provide specific rules for a region or if you want to create some atmosphere in different parts of an adventure map.
+
+In the following example the messages will only be sent to players who are in the world 'erabus' and in the 'spawn' or 'starting_area' region.
+
+    guest-hints:
+      mode: rotation
+      delay: 5m
+      worlds:
+      - world
+      regions:
+      - spawn
+      - starting_area
+
+*You must specify the world that contains the region otherwise your message will be ignored by the plugin*
 
 ## Permissions
 
-Each command is assigned its own permission node and all follow the same style. The full list of available permissions, and their defaults, is below. Additionally there is the `hearthstone.teleport.cooldown` node. Players who have this permission will not be able to teleport home unless the cooldown time has expired.
+<dl>
+  <dt>timedmessages</dt>
+  <dd>Allows access to everything in the plugin (defaults op).</dd>
+  <dt>timedmessages.reload</dt>
+  <dd>Allow a player to reload messages.yml from disk (defaults op).</dd>
+  <dt>timedmessages.start</dt>
+  <dd>Allow a player to start all timed messages (defaults op)</dd>
+  <dt>timedmessages.status</dt>
+  <dd>Allow a player to check how many timed messages are running (defaults op).</dd>
+  <dt>timedmessages.stop</dt>
+  <dd>Allow a player to stop all timed messages (defaults op).</dd>
+</dl>
 
-    hearthstone.set (op)
-    hearthstone.set.own (true)
-    hearthstone.set.others (op)
-    hearthstone.teleport (op)
-    hearthstone.teleport.own (true)
-    hearthstone.teleport.others (op)
-    hearthstone.teleport.cooldown (!op)
+#### Using permissions in messages
+
+You can also create messages which are only broadcast to players that have a specific permission. This is useful if you want to create rank specific hints for the players on your server for example. 
+
+In the following example the messages will only be sent to players with the permission 'group.default'
+
+    guest-hints:
+      mode: rotation
+      delay: 5m
+      permission: group.explorer
+
+
+

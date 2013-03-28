@@ -1,8 +1,8 @@
 ---
 layout: front
-title: Hearthstone
-description: A easy and fun way to manage multiworld homes.
+title: TimedMessages
+description: Broadcast periodic messages to players.
 ---
 {% include JB/setup %}
 
-Hearthstone is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+TimedMessages is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.

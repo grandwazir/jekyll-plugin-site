@@ -1,7 +1,7 @@
 ---
 layout: front
-title: Hearthstone
-description: A easy and fun way to manage multiworld homes.
+title: DimensionDoor
+description: Multiworld management made easy
 ---
 {% include JB/setup %}
 

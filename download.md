@@ -1,8 +1,8 @@
 ---
 layout: page
 title: "Download"
-description: "Download Hearthstone"
-version: 1.3.2
+description: "Download DimensionDoor"
+version: 2.2.1
 group: navigation
 ---
 {% include JB/setup %}
@@ -12,7 +12,7 @@ group: navigation
 <ul class="inline">
     <li><a href="http://repository.james.richardson.name/releases/name/richardson/james/bukkit/{{ site.package }}/{{ page.version }}/{{ site.package }}-{{ page.version }}.jar"><button class="btn btn-large btn-primary" type="button">Download</button></a></li>
     <li><a href="{{  BASE_PATH }}/versions/{{page.version}}.html"><button class="btn btn-large btn-info" type="button">What's new</button></a></li>
-    <li><a href="https://github.com/grandwazir/{{ site.package | capitalize }}/tree/v{{ page.version }}"><button class="btn btn-large btn" type="button">Source</button></a></li>
+    <li><a href="https://github.com/grandwazir/{{ site.title | capitalize }}/tree/v{{ page.version }}"><button class="btn btn-large btn" type="button">Source</button></a></li>
 </ul>
 
 ### Getting other versions
@@ -32,6 +32,6 @@ You can also build {{ site.title }} from the source if you would prefer to do so
 
 Note it is no longer necessary to do this to alter messages in the plugin. Instead you should read the documentation on how to localise the plugin instead. This assumes that you have Maven and git installed on your computer.
 
-    git clone git://github.com/grandwazir/{{ site.package | capitalize }}.git
-    cd {{ site.package | capitalize }}
+    git clone git://github.com/grandwazir/{{ site.title | capitalize }}.git
+    cd {{ site.title | capitalize }}
     mvn install

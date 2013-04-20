@@ -79,7 +79,32 @@ You can also set the difficulty of a world, together with your desired game mode
 * `/dd modify creative gamemode creative`
 * `/dd modify creative difficulty peaceful`
 
-We can check the results by inspecting the configuration for our creative world by typing `/dd info creative`
+We can check the results by inspecting the configuration for our creative world by typing `/dd info creative`.
+
+### Full list of available attributes
+
+<dl>
+<dt>difficulty</dt>
+<dd>Change the difficulty of the world.</dd>
+<dt>enabled</dt>
+<dd>If a world should be loaded when the server starts.</dd>
+<dt>game_mode</dt>
+<dd>Change the default game mode of the world.</dd>
+<dt>spawn_monsters</dt>
+<dd>Change if monsters will spawn in the world.</dd>
+<dt>spawn_animals</dt>
+<dd>Change if a animals will spawn in the world.</dd>
+<dt>pvp</dt>
+<dd>Set if players are able to hurt each other in the world.</dd>
+<dt>keep_spawn_in_memory</dt>
+<dd>Set if the spawn of the world should be kept loaded.</dd>
+<dt>isolated_chat</dt>
+<dd>Set if chat in this world should be private to this world.</dd>
+<dt>texture_pack</dt>
+<dd>Set a URL to a custom texture pack for this world.</dd>
+<dt>respawn</dt>
+<dd>Set if a player should respawn in this world when they die.</dd>
+</dl>
 
 ### World specific chat
 
@@ -133,3 +158,34 @@ You can disable this functionality completely on a world basis by using the foll
 As a convenience feature for setting up new worlds you can teleport to any loaded world by using the teleport command. I am going to teleport to fantastic by typing `/dd teleport fantastic`. You will always be teleported to that world's initial spawn location. 
 
 It is tempting to give players this command but I would recommend you instead look into creating portals to each world using another plugin such as Stargate. This has the added bonus of you being able to control which worlds players can access.
+
+## Permissions
+
+<dl>
+<dt>dimensiondoor.*</dt>
+<dd>Allows access to everything in the plugin (defaults op).</dd>
+<dt>dimensiondoor.access.*</dt>
+<dd>Allow a player to access every world in the server (defaults op).</dd>
+<dt>dimensiondoor.access.[world]</dt>
+<dd>Allow a player to access a specified world (defaults op).</dd>
+<dt>dimensiondoor.clear</dt>
+<dd>Allow a player to clear a world of monsters and animals (defaults op).</dd>
+<dt>dimensiondoor.info</dt>
+<dd>Allow a player to read information of a world (defaults op).</dd>
+<dt>dimensiondoor.list</dt>
+<dd>Allow a player to list all the worlds on the server (defaults op).</dd>
+<dt>dimensiondoor.load</dt>
+<dd>Allow a player to load an unloaded world (defaults op).</dd>
+<dt>dimensiondoor.modify.*</dt>
+<dd>Allow a player to modify all world attributes (defaults op).</dd>
+<dt>dimensiondoor.modify.[attribute]</dt>
+<dd>Allow a player modify a specific attribute for a world (defaults op).</dd>
+<dt>dimensiondoor.remove</dt>
+<dd>Allow a player to remove a world from the server (defaults op).</dd>
+<dt>dimensiondoor.spawn</dt>
+<dd>Allow a player to set the spawn of the world (defaults op).</dd>
+<dt>dimensiondoor.teleport</dt>
+<dd>Allow a player to teleport to other worlds (defaults op).</dd>
+<dt>dimensiondoor.unload</dt>
+<dd>Allow a player to unload a world (defaults op).</dd>
+</dl>

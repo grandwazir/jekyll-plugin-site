@@ -49,6 +49,8 @@ For each ban the plugin records:
 
 BanHammer supports any of the databases that Bukkit currently supports, which at the time of writing, are SQLite3 and MySQL. You can easily access these bans to create a custom ban list for your website.
 
+You can also audit the number of bans made by your players to check how they are using the plugin. 
+
 ### Ban management
 
 You can view your own ban history, or that of any other player, quickly and easily within the game. You can also revoke previous bans, clear the history of a player altogether and export or import bans from the stock minecraft list.

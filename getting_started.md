@@ -54,6 +54,14 @@ To understand this section properly you will need to know the difference between
 
 Inactive bans are any bans which have expired so they would be past temporary bans.
 
+### Undoing
+
+You can undo a ban if you make a mistake. This is meant to be used shortly after you made the original ban and for that reason has a 1 minute time limit. This will erase all history of the ban from the database.
+
+To undo a ban made by yourself type `/bh undo`.
+
+To undo a ban made by another player type `/bh undo <name>`.
+
 ### Pardoning
 
 Pardoning a player will remove from the database any active bans and allow them to rejoin the server. I felt I was a bit mean to tom so I am going to pardon him now by typing `/pardon tom`.
@@ -85,6 +93,21 @@ You can get a report of all the bans associated with a particular player easily.
 To view the ban history of someone else type `/bh history <name>`.
 
 To view your own type `/bh history`.
+
+### Auditing the bans of a player
+
+You can also get a report of all the bans made by a player on your server. This includes the following details:‭
+
+* How many bans they have made
+* How many permanent bans they have issued
+* How many temporary bans they have issued
+* How many bans are still active
+* How many bans have since expired
+* How many bans that have been pardoned (by themselves or anyone else).
+
+To view an audit report of someone type `/bh audit <name>`.
+
+To view your own type `/bh audit`.
 
 ### Importing and exporting bans
 
@@ -137,6 +160,12 @@ This is the default setting when you setup bukkit for the first time. It creates
 <dl>
   <dt>banhammer</dt>
   <dd>Allows access to everything in the plugin (defaults op).</dd>
+  <dt>banhammer.audit</dt>
+  <dd>Allow a player to audit bans made by anyone (defaults op).</dd>
+  <dt>banhammer.audit.own</dt>
+  <dd>Allow a player to audit their own bans (defaults true).</dd>
+  <dt>banhammer.audit.others</dt>
+  <dd>Allow a player to audit the bans of others (defaults op).</dd>
   <dt>banhammer.ban</dt>
   <dd>Allow a player to ban someome permanently (defaults op).</dd>
   <dt>banhammer.ban.[limit]</dt>
@@ -157,6 +186,8 @@ This is the default setting when you setup bukkit for the first time. It creates
   <dd>Allow a player to kick another (defaults op).</dd>
   <dt>banhammer.limits</dt>
   <dd>Allow a player to view any configured limits (defaults op).</dd>
+  <dt>banhammer.notify</dt>
+  <dd>Allow a player to receive notifications of administrative actions (defaults true).</dd>
   <dt>banhammer.pardon</dt>
   <dd>Allow a player to pardon any ban (defaults op).</dd>
   <dt>banhammer.pardon.own</dt>
@@ -167,5 +198,13 @@ This is the default setting when you setup bukkit for the first time. It creates
   <dd>Allow a player to purge the ban history of a player (defaults op).</dd>
   <dt>banhammer.recent</dt>
   <dd>Allow a player to see what bans have recently been made (defaults op).</dd>
+  <dt>banhammer.undo</dt>
+  <dd>Allow a player to undo the last ban made by any player (defaults op).</dd>
+  <dt>banhammer.undo.own</dt>
+  <dd>Allow a player to undo the last ban they made (defaults true).</dd>
+  <dt>banhammer.undo.others</dt>
+  <dd>Allow a player to undo the last ban made by anyone (defaults op).</dd>
+  <dt>banhammer.undo.unrestricted</dt>
+  <dd>Allow a player to undo bans made greater than 1 minute ago (defaults op).</dd>
 </dl>
 

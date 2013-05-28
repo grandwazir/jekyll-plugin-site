@@ -7,11 +7,11 @@ scrollspy: [Setting homes, Going home, Permissions]
 ---
 {% include JB/setup %}
 
-<p class="lead">Getting started with Hearthstone couldn't be easier. Just download and drag it into your plugins folder and away you go. Still stuck? Read on.</p>
+<p class="lead">Getting started with TimedRestore couldn't be easier. Just download and drag it into your plugins folder and away you go. Still stuck? Read on.</p>
 
 ## Setting homes
 
-Players can set a home anywhere in the game world with two exceptions. Firstly players may not set homes in areas where they are unable to build. Secondly they can not use an obstructed location. Hearthstone considers any area which is not made out of air and does not have enough space for the player to teleport to as obstructed.
+Players can set a home anywhere in the game world with two exceptions. Firstly players may not set homes in areas where they are unable to build. Secondly they can not use an obstructed location. TimedRestore considers any area which is not made out of air and does not have enough space for the player to teleport to as obstructed.
 
 You can set your own home by typing either `/home set` or `/hs set`; both do exactly the same thing. There is no cooldown when setting a new home and you can do it as often as you like.
 
@@ -25,7 +25,7 @@ You can also set a home for someone else using the same command. This works exac
 
 You can also prevent players from setting a world in a location where they are unable to build. This is helpful for example in adventure maps where teleportation could cause you problems.
 
-All you need to do is download WorldGuard and region the areas of your world. Hearthstone will check with WorldGuard to see if a player is allowed to build in an area. It is that simple!
+All you need to do is download WorldGuard and region the areas of your world. TimedRestore will check with WorldGuard to see if a player is allowed to build in an area. It is that simple!
 ## Going home
 
 You can teleport home at any time by typing `/home` providing it is not cooling down. This will instantly teleport to your home in your current world. Unless I have permission I would not be able to teleport again until my cooldown has expired.
@@ -44,12 +44,12 @@ It is possible for administrators to force players to obey a cooldown between te
 
 ## Permissions
 
-Each command is assigned its own permission node and all follow the same style. The full list of available permissions, and their defaults, is below. Additionally there is the `hearthstone.teleport.cooldown` node. Players who have this permission will not be able to teleport home unless the cooldown time has expired.
+Each command is assigned its own permission node and all follow the same style. The full list of available permissions, and their defaults, is below. Additionally there is the `TimedRestore.teleport.cooldown` node. Players who have this permission will not be able to teleport home unless the cooldown time has expired.
 
-    hearthstone.set (op)
-    hearthstone.set.own (true)
-    hearthstone.set.others (op)
-    hearthstone.teleport (op)
-    hearthstone.teleport.own (true)
-    hearthstone.teleport.others (op)
-    hearthstone.teleport.cooldown (!op)
+    TimedRestore.set (op)
+    TimedRestore.set.own (true)
+    TimedRestore.set.others (op)
+    TimedRestore.teleport (op)
+    TimedRestore.teleport.own (true)
+    TimedRestore.teleport.others (op)
+    TimedRestore.teleport.cooldown (!op)

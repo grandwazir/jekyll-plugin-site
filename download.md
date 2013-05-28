@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Download"
-description: "Download Hearthstone"
+description: "Download TimedRestore"
 version: 1.3.2
 group: navigation
 ---

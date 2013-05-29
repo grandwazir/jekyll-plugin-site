@@ -3,53 +3,72 @@ layout: page
 title: "Getting started"
 description: ""
 group: navigation
-scrollspy: [Setting homes, Going home, Permissions] 
+scrollspy: [Scheduling tasks, Configuring tasks, Permissions] 
 ---
 {% include JB/setup %}
 
 <p class="lead">Getting started with TimedRestore couldn't be easier. Just download and drag it into your plugins folder and away you go. Still stuck? Read on.</p>
 
-## Setting homes
+## Scheduling tasks
 
-Players can set a home anywhere in the game world with two exceptions. Firstly players may not set homes in areas where they are unable to build. Secondly they can not use an obstructed location. TimedRestore considers any area which is not made out of air and does not have enough space for the player to teleport to as obstructed.
+<div class="alert alert-block">
+  Restoring regions is a time consuming operation and <strong>will lock</strong> your server while they are ongoing. You may want to consider this in your scheduling when restoring multiple large regions.
+</div>
 
-You can set your own home by typing either `/home set` or `/hs set`; both do exactly the same thing. There is no cooldown when setting a new home and you can do it as often as you like.
+Scheduling tasks in TimedRestore is very flexible and best explained through examples. Internally TimedRestore uses the [cron4j](http://www.sauronsoftware.it/projects/cron4j) library to simulate a unix cron like syntax for scheduling tasks. It is broken into 5 values and seperated by spaces:
 
-Players are allowed to set one home per world. If they set another one when they already have an existing home, it will forget about the other one.
+<dl>
+  <dt>Minutes sub-pattern</dt>
+  <dd>During which minutes of the hour should the task been launched? The values range is from 0 to 59.</dd>
+  <dt>Hours sub-pattern</dt>
+  <dd>During which hours of the day should the task been launched? The values range is from 0 to 23.</dd>
+  <dt>Days of month sub-pattern. </dt>
+  <dd>During which days of the month should the task been launched? The values range is from 1 to 31. The special value "L" can be used to recognize the last day of month.</dd>
+  <dt>Months sub-pattern.</dt>
+  <dd>During which months of the year should the task been launched? The values range is from 1 (January) to 12 (December), otherwise this sub-pattern allows the aliases "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov" and "dec".</dd>
+  <dt>Days of week sub-pattern</dt>
+  <dd>During which days of the week should the task been launched? The values range is from 0 (Sunday) to 6 (Saturday), otherwise this sub-pattern allows the aliases "sun", "mon", "tue", "wed", "thu", "fri" and "sat".</dd>
+</dl>
 
-### Setting other players homes
+Full documentation is available in the [cron4j manual](http://www.sauronsoftware.it/projects/cron4j/manual.php).
 
-You can also set a home for someone else using the same command. This works exactly the same way but you need to supply the name of the player whos home you want to set. For example `/hs set grandwazir` would set my home to your current location.
+### Example schedules
 
-### Restricting home locations
+<dl>
+  <dt>0 */1 * * *</dt>
+  <dd>To be scheduled once every hour, at the start of the hour.</dd>
+  <dt>* * * * *</dt>
+  <dd>To be scheduled every minute.</dd>
+  <dt>*/5 * * * *</dt>
+  <dd>To be scheduled every 5 minutes</dd>
+  <dt>0 0 */7 * *</dt>
+  <dd>To be scheduled once a week on the first day at midnight.</dd>
+  <dt>0 7 L * *</dt>
+  <dd>To be scheduled on the last day of each month at 7AM.</dd>
+</dl>
 
-You can also prevent players from setting a world in a location where they are unable to build. This is helpful for example in adventure maps where teleportation could cause you problems.
+## Configuring tasks
 
-All you need to do is download WorldGuard and region the areas of your world. TimedRestore will check with WorldGuard to see if a player is allowed to build in an area. It is that simple!
-## Going home
+For this example I am going to simple create a task which is going to restore a single region. I've already [taken a snapshot](http://wiki.sk89q.com/wiki/WorldEdit/Snapshots) of the world called `original` which I am going to use to restore the region. The region I am going to restore is called `spawn` and I want to do it once every day. My tasks.yml is going to end up looking like this:
 
-You can teleport home at any time by typing `/home` providing it is not cooling down. This will instantly teleport to your home in your current world. Unless I have permission I would not be able to teleport again until my cooldown has expired.
+    tutorial:
+      schedule: "0 0 */1 * *"
+      world: world
+      snapshot: "original"
+      regions:
+        - spawn
 
-You can also teleport to homes located in other worlds by typing `/hs teleport grandwazir world_nether`. This would teleport me to my secret nether fortress.
-
-### Teleporting to other players homes
-
-Additionally you can teleport to a home belonging to any player in any world. This command still enforces a cooldown, so it you may want to make sure your moderators are except from the cooldown when you give them permission to use this command. For example I am going to teleport to Fuzic's house in the current world by typing `/hs teleport fuzic`.
-
-### Cooldown between teleports
-
-It is possible for administrators to force players to obey a cooldown between teleports. This is useful to prevent players repeatedly setting and teleporting home as a travel, safety or griefing exploit. You set the amount of time you wish players to wait by changing the value of cooldown in the config.yml. By default it looks like this:
-
-    cooldown: 15m
+You can configure as many regions as you like to restore within one task. TimedRestore will restore the regions in the order that you specify. They will all be restored using the same snapshot.
 
 ## Permissions
 
-Each command is assigned its own permission node and all follow the same style. The full list of available permissions, and their defaults, is below. Additionally there is the `TimedRestore.teleport.cooldown` node. Players who have this permission will not be able to teleport home unless the cooldown time has expired.
-
-    TimedRestore.set (op)
-    TimedRestore.set.own (true)
-    TimedRestore.set.others (op)
-    TimedRestore.teleport (op)
-    TimedRestore.teleport.own (true)
-    TimedRestore.teleport.others (op)
-    TimedRestore.teleport.cooldown (!op)
+<dl>
+  <dt>timedrestore</dt>
+  <dd>Allow access to everything in the plugin (defaults op)</dd>
+  <dt>timedrestore.reload</dt>
+  <dd>Allow a player to reload the plugin's configuration (defaults op) </dd>
+  <dt>timedrestore.scheduler</dt>
+  <dd>Allow a player to enable or disable scheduled tasks (defaults op)</dd>
+  <dt>timedrestore.status</dt>
+  <dd>Allow a player to check the status of the scheduler (defaults op)</dd>
+</dl>

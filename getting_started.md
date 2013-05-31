@@ -161,15 +161,17 @@ This is the default setting when you setup bukkit for the first time. It creates
   <dt>banhammer</dt>
   <dd>Allows access to everything in the plugin (defaults op).</dd>
   <dt>banhammer.audit</dt>
-  <dd>Allow a player to audit bans made by anyone (defaults op).</dd>
-  <dt>banhammer.audit.own</dt>
+  <dd>Allow a player audit bans made by anyone (defaults op).</dd>
+  <dt>banhammer.audit.self</dt>
   <dd>Allow a player to audit their own bans (defaults true).</dd>
   <dt>banhammer.audit.others</dt>
   <dd>Allow a player to audit the bans of others (defaults op).</dd>
   <dt>banhammer.ban</dt>
-  <dd>Allow a player to ban someome permanently (defaults op).</dd>
+  <dd>Allow a player to ban anyone for any length of time (defaults op).</dd>
   <dt>banhammer.ban.[limit]</dt>
   <dd>Allow a player to ban someone up to the <a href="{{ BASE_PATH }}/getting_started.html#setting_a_maximum_length_for_temporary_bans">limit specified</a> in limits.yml (defaults false).</dd>
+  <dt>banhammer.ban.permanent</dt>
+  <dd>Allow a player to ban someone permanently (defaults op).</dd>
   <dt>banhammer.check</dt>
   <dd>Allow a player to check if someone is banned (defaults op).</dd>
   <dt>banhammer.export</dt>
@@ -186,8 +188,6 @@ This is the default setting when you setup bukkit for the first time. It creates
   <dd>Allow a player to kick another (defaults op).</dd>
   <dt>banhammer.limits</dt>
   <dd>Allow a player to view any configured limits (defaults op).</dd>
-  <dt>banhammer.notify</dt>
-  <dd>Allow a player to receive notifications of administrative actions (defaults true).</dd>
   <dt>banhammer.pardon</dt>
   <dd>Allow a player to pardon any ban (defaults op).</dd>
   <dt>banhammer.pardon.own</dt>
@@ -196,15 +196,11 @@ This is the default setting when you setup bukkit for the first time. It creates
   <dd>Allow a player to pardon bans made by others (defaults op).</dd>
   <dt>banhammer.purge</dt>
   <dd>Allow a player to purge the ban history of a player (defaults op).</dd>
+  <dt>banhammer.purge.own</dt>
+  <dd>Allow a player to purge bans they have made (defaults op).</dd>
+  <dt>banhammer.purge.others</dt>
+  <dd>Allow a player to purge bans made by others (defaults op).</dd>
   <dt>banhammer.recent</dt>
   <dd>Allow a player to see what bans have recently been made (defaults op).</dd>
-  <dt>banhammer.undo</dt>
-  <dd>Allow a player to undo the last ban made by any player (defaults op).</dd>
-  <dt>banhammer.undo.own</dt>
-  <dd>Allow a player to undo the last ban they made (defaults true).</dd>
-  <dt>banhammer.undo.others</dt>
-  <dd>Allow a player to undo the last ban made by anyone (defaults op).</dd>
-  <dt>banhammer.undo.unrestricted</dt>
-  <dd>Allow a player to undo bans made greater than 1 minute ago (defaults op).</dd>
 </dl>
 

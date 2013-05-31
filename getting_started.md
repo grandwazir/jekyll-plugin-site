@@ -3,53 +3,55 @@ layout: page
 title: "Getting started"
 description: ""
 group: navigation
-scrollspy: [Setting homes, Going home, Permissions] 
+scrollspy: [Checking associations, Database, Permissions] 
 ---
 {% include JB/setup %}
 
-<p class="lead">Getting started with Hearthstone couldn't be easier. Just download and drag it into your plugins folder and away you go. Still stuck? Read on.</p>
+<p class="lead">Getting started with Alias couldn't be easier. Just download and drag it into your plugins folder and away you go. Still stuck? Read on.</p>
 
-## Setting homes
+## Checking associations
 
-Players can set a home anywhere in the game world with two exceptions. Firstly players may not set homes in areas where they are unable to build. Secondly they can not use an obstructed location. Hearthstone considers any area which is not made out of air and does not have enough space for the player to teleport to as obstructed.
+Alias matches player names to IP addresses automatically when people join your server. You can check for these associations using the plugin commands. To check if two players are related type `/as check <name>` to see a report of all the names they have used. For example `/as check grandwazir` would check all the names that I had used to login.
 
-You can set your own home by typing either `/home set` or `/hs set`; both do exactly the same thing. There is no cooldown when setting a new home and you can do it as often as you like.
+If you want to remove an assoication for any reason you can type `/as delete <name> alias`. For example `/as delete grandwazir sergeant_subtle` would delete any link between those two players.
 
-Players are allowed to set one home per world. If they set another one when they already have an existing home, it will forget about the other one.
+## Database
 
-### Setting other players homes
+Alias uses the Bukkit persistance system. This means that you need to configure your bukkit.yml in your server directory with your database settings. Below are example bukkit.yml for MySQL and SQlite3.
 
-You can also set a home for someone else using the same command. This works exactly the same way but you need to supply the name of the player whos home you want to set. For example `/hs set grandwazir` would set my home to your current location.
+### MySQL
 
-### Restricting home locations
+This is an example configuration if you wanted to use MySQL. This assumes that it is hosted locally and you want your minecraft database to be minecraft_game. You will need to customise this for your own username and password.
 
-You can also prevent players from setting a world in a location where they are unable to build. This is helpful for example in adventure maps where teleportation could cause you problems.
+    database:
+        username: bukkit
+        isolation: SERIALIZABLE
+        driver: com.mysql.jdbc.Driver
+        password: walrus
+        url: jdbc:mysql://localhost:3306/minecraft_game
 
-All you need to do is download WorldGuard and region the areas of your world. Hearthstone will check with WorldGuard to see if a player is allowed to build in an area. It is that simple!
-## Going home
+If you get errors when setting this up make sure that you have given your user enough permissions to administrate the database and the database itself does actually exist.
 
-You can teleport home at any time by typing `/home` providing it is not cooling down. This will instantly teleport to your home in your current world. Unless I have permission I would not be able to teleport again until my cooldown has expired.
+### SQlite3
 
-You can also teleport to homes located in other worlds by typing `/hs teleport grandwazir world_nether`. This would teleport me to my secret nether fortress.
+This is the default setting when you setup bukkit for the first time. It creates a sqlite database for each plugin that needs in the plugins data folder. For BanHammer this would be at plugins/BanHammer/BanHammer.db. You can change those folders by changing the settings below.
 
-### Teleporting to other players homes
-
-Additionally you can teleport to a home belonging to any player in any world. This command still enforces a cooldown, so it you may want to make sure your moderators are except from the cooldown when you give them permission to use this command. For example I am going to teleport to Fuzic's house in the current world by typing `/hs teleport fuzic`.
-
-### Cooldown between teleports
-
-It is possible for administrators to force players to obey a cooldown between teleports. This is useful to prevent players repeatedly setting and teleporting home as a travel, safety or griefing exploit. You set the amount of time you wish players to wait by changing the value of cooldown in the config.yml. By default it looks like this:
-
-    cooldown: 15m
+    database:
+        username: bukkit
+        isolation: SERIALIZABLE
+        driver: org.sqlite.JDBC
+        password: walrus
+        url: jdbc:sqlite:{DIR}{NAME}.db
 
 ## Permissions
 
 Each command is assigned its own permission node and all follow the same style. The full list of available permissions, and their defaults, is below. Additionally there is the `hearthstone.teleport.cooldown` node. Players who have this permission will not be able to teleport home unless the cooldown time has expired.
 
-    hearthstone.set (op)
-    hearthstone.set.own (true)
-    hearthstone.set.others (op)
-    hearthstone.teleport (op)
-    hearthstone.teleport.own (true)
-    hearthstone.teleport.others (op)
-    hearthstone.teleport.cooldown (!op)
+<dl>
+  <dt>alias</dt>
+  <dd>Allows access to everything in the plugin (defaults op).</dd>
+  <dt>alias.check</dt>
+  <dd>Allow a player to check the names another player has used (defaults op).</dd>
+  <dt>alias.delete</dt>
+  <dd>Allow a player to delete associations between players (defaults op).</dd>
+</dl>

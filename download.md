@@ -2,7 +2,7 @@
 layout: page
 title: "Download"
 description: "Download StarterKit"
-version: 1.3.1
+version: 1.3.2
 group: navigation
 ---
 {% include JB/setup %}

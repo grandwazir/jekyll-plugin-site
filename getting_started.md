@@ -9,6 +9,10 @@ scrollspy: [Setting titles, Using scoreboards, Permissions]
 
 <p class="lead">Getting started with jChat couldn't be easier. Just download and drag it into your plugins folder and away you go. Still stuck? Read on.</p>
 
+<div class='alert alert-block'>
+These documentation is for version 2.0.0 and beyond. If you are using an earlier version please read the documentation available on the jChat wiki.
+</div>
+
 ## Setting titles
 
 You can easily create titles by modifying `titles.yml` file in the jChat configuration directory. In the following example I am going to create a title for the moderators on my server. The title will give them a yellow name.

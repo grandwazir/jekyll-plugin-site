@@ -1,8 +1,8 @@
 ---
 layout: page
 title: "Download"
-description: "Download Hearthstone"
-version: 1.3.2
+description: "Download jChat"
+version: 2.0.0
 group: navigation
 ---
 {% include JB/setup %}

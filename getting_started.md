@@ -3,53 +3,73 @@ layout: page
 title: "Getting started"
 description: ""
 group: navigation
-scrollspy: [Setting homes, Going home, Permissions] 
+scrollspy: [Setting titles, Using scoreboards, Permissions] 
 ---
 {% include JB/setup %}
 
-<p class="lead">Getting started with Hearthstone couldn't be easier. Just download and drag it into your plugins folder and away you go. Still stuck? Read on.</p>
+<p class="lead">Getting started with jChat couldn't be easier. Just download and drag it into your plugins folder and away you go. Still stuck? Read on.</p>
 
-## Setting homes
+## Setting titles
 
-Players can set a home anywhere in the game world with two exceptions. Firstly players may not set homes in areas where they are unable to build. Secondly they can not use an obstructed location. Hearthstone considers any area which is not made out of air and does not have enough space for the player to teleport to as obstructed.
+You can easily create titles by modifying `titles.yml` file in the jChat configuration directory. In the following example I am going to create a title for the moderators on my server. The title will give them a yellow name.
 
-You can set your own home by typing either `/home set` or `/hs set`; both do exactly the same thing. There is no cooldown when setting a new home and you can do it as often as you like.
+    moderators:
+      prefix: '§e'
+      suffix: ''
+      weight: 0
+      
+The name of the title is designated by the name of the section which is in this case `moderators`. To give this title to someone I will need to grant them the `jchat.title.moderators` permission. 
 
-Players are allowed to set one home per world. If they set another one when they already have an existing home, it will forget about the other one.
+jChat will add a reset colour code to the end of a players name. This means that regardless of your settings any text typed by the player will be in white.
 
-### Setting other players homes
+### Configuring title weights
 
-You can also set a home for someone else using the same command. This works exactly the same way but you need to supply the name of the player whos home you want to set. For example `/hs set grandwazir` would set my home to your current location.
+Additionally you can set weights to the titles you configure. Consider the following example:
 
-### Restricting home locations
+    moderators:
+      prefix: '§e'
+      suffix: ''
+      weight: 0
+    resident:
+      prefix: '§2'
+      suffix: ''
+      weight: 1
 
-You can also prevent players from setting a world in a location where they are unable to build. This is helpful for example in adventure maps where teleportation could cause you problems.
+If a player has both `jchat.title.moderators` and `jchat.title.resident`, prehaps through inheriting permission groups, the plugin will first check if they have the moderator title before checking resident. Heavier titles 'sink' to the bottom of the list while lighter ones rise to the top. 
 
-All you need to do is download WorldGuard and region the areas of your world. Hearthstone will check with WorldGuard to see if a player is allowed to build in an area. It is that simple!
-## Going home
+### Refreshing titles
 
-You can teleport home at any time by typing `/home` providing it is not cooling down. This will instantly teleport to your home in your current world. Unless I have permission I would not be able to teleport again until my cooldown has expired.
+Occassionally you might need to refresh the title you have given to a player, for example when their permissions are updated. jChat automatically updates display names when a player joins the server and when they change worlds. To force an update type `jchat refresh [name of player]`.
 
-You can also teleport to homes located in other worlds by typing `/hs teleport grandwazir world_nether`. This would teleport me to my secret nether fortress.
+## Using scoreboards
 
-### Teleporting to other players homes
+You can use the new scoreboard support introduced in version 2.0.0 to make any changes to a player's display name visible above their head and on the player list (the list retrieved when pressing Tab in game). Enable scoreboard support in `config.yml` and then configure the titles in `titles.yml`
 
-Additionally you can teleport to a home belonging to any player in any world. This command still enforces a cooldown, so it you may want to make sure your moderators are except from the cooldown when you give them permission to use this command. For example I am going to teleport to Fuzic's house in the current world by typing `/hs teleport fuzic`.
+In the following example I am going to setup the plugin to give all residents a blue name and add the suffix `(guest)` to their name on the player list.
 
-### Cooldown between teleports
+    default:
+      prefix: '§3'
+      suffix: ''
+      weight: 0
+      scoreboard:
+        display-name: "guest"
+        append-team-name: true
+        friendly-fire: false
+        see-invisibles: false
 
-It is possible for administrators to force players to obey a cooldown between teleports. This is useful to prevent players repeatedly setting and teleporting home as a travel, safety or griefing exploit. You set the amount of time you wish players to wait by changing the value of cooldown in the config.yml. By default it looks like this:
-
-    cooldown: 15m
+To turn this feature off set `append-team-name` to false.
 
 ## Permissions
 
-Each command is assigned its own permission node and all follow the same style. The full list of available permissions, and their defaults, is below. Additionally there is the `hearthstone.teleport.cooldown` node. Players who have this permission will not be able to teleport home unless the cooldown time has expired.
-
-    hearthstone.set (op)
-    hearthstone.set.own (true)
-    hearthstone.set.others (op)
-    hearthstone.teleport (op)
-    hearthstone.teleport.own (true)
-    hearthstone.teleport.others (op)
-    hearthstone.teleport.cooldown (!op)
+<dl>
+  <dt>jchat</dt>
+  <dd>Allow access to everything in the plugin (defaults op)</dd>
+  <dt>jchat.reload</dt>
+  <dd>Allow a player to reload the plugin's configuration (defaults op)</dd>
+  <dt>jchat.refresh</dt>
+  <dd>Allow a player refresh the display name of any player (defaults op)</dd>
+  <dt>jchat.refresh.self</dt>
+  <dd>Allow a player to refresh their own display name (defaults true)</dd>
+  <dt>jchat.refresh.others</dt>
+  <dd>Allow a player to refresh the display name of others (defaults op)</dd>
+</dl>

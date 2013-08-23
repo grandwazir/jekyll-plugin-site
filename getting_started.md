@@ -188,6 +188,8 @@ This is the default setting when you setup bukkit for the first time. It creates
   <dd>Allow a player to kick another (defaults op).</dd>
   <dt>banhammer.limits</dt>
   <dd>Allow a player to view any configured limits (defaults op).</dd>
+  <dt>banhammer.notify</dt>
+  <dd>Allow a player to receive notices when someone is banned, kicked or pardoned. (defaults true).</dd>
   <dt>banhammer.pardon</dt>
   <dd>Allow a player to pardon any ban (defaults op).</dd>
   <dt>banhammer.pardon.own</dt>
@@ -202,5 +204,13 @@ This is the default setting when you setup bukkit for the first time. It creates
   <dd>Allow a player to purge bans made by others (defaults op).</dd>
   <dt>banhammer.recent</dt>
   <dd>Allow a player to see what bans have recently been made (defaults op).</dd>
+  <dt>banhammer.undo</dt>
+  <dd>Allow a player undo any ban made (defaults op).</dd>
+  <dt>banhammer.undo.own</dt>
+  <dd>Allow a player to undo a ban they have made until a certain time as expired (defaults op).</dd>
+  <dt>banhammer.undo.others</dt>
+  <dd>Allow a player to undo a ban someone else has made (defaults op).</dd>
+  <dt>banhammer.undo.unrestricted</dt>
+  <dd>Allow a player to ignore the undo time limit (defaults op).</dd>
 </dl>
 

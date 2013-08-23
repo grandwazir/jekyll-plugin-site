@@ -2,7 +2,7 @@
 layout: page
 title: "Download"
 description: "Download TimedRestore"
-version: 1.0.0
+version: 1.0.1
 group: navigation
 ---
 {% include JB/setup %}

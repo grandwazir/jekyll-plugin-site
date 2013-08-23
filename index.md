@@ -1,7 +1,7 @@
 ---
 layout: front
 title: TimedRestore
-description: A easy and fun way to manage multiworld homes.
+description: Periodically restore WorldGuard regions.
 ---
 {% include JB/setup %}
 

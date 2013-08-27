@@ -2,7 +2,7 @@
 layout: page
 title: "Download"
 description: "Download Alias"
-version: 1.3.2
+version: 1.4.3
 group: navigation
 ---
 {% include JB/setup %}
@@ -10,7 +10,7 @@ group: navigation
 <p class="lead">The latest stable version is <strong>{{page.version}}</strong> and available to download. Before installing make sure to check the change log for any relevant changes.</p>
 
 <ul class="inline">
-    <li><a href="http://repository.james.richardson.name/releases/name/richardson/james/bukkit/{{ site.package }}/{{ page.version }}/{{ site.package }}-{{ page.version }}.jar"><button class="btn btn-large btn-primary" type="button">Download</button></a></li>
+    <li><a href="http://repository.james.richardson.name/releases/name/richardson/james/bukkit/{{ site.package }}/{{ page.version }}/{{ site.package }}-{{ page.version }}-shaded.jar"><button class="btn btn-large btn-primary" type="button">Download</button></a></li>
     <li><a href="{{  BASE_PATH }}/versions/{{page.version}}.html"><button class="btn btn-large btn-info" type="button">What's new</button></a></li>
     <li><a href="https://github.com/grandwazir/{{ site.package | capitalize }}/tree/v{{ page.version }}"><button class="btn btn-large btn" type="button">Source</button></a></li>
 </ul>
